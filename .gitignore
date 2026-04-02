@@ -1,0 +1,111 @@
+# Build directories
+build/
+out/
+bin/
+lib/
+
+# Compiled object files
+*.o
+*.obj
+
+# Compiled dynamic/static libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+Makefile
+
+# CMake build presets
+CMakeUserPresets.json
+
+# Make
+*.make
+*.mk
+
+# Ninja
+.ninja_deps
+.ninja_log
+*.ninja
+
+# Visual Studio 2022
+.vs/
+*.vcxproj.user
+*.vcxproj.filters.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.aps
+*.ncb
+*.sdf
+*.opensdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+ipch/
+
+# VS build output
+x64/
+x86/
+[Dd]ebug/
+[Rr]elease/
+[Dd]ebug*/
+[Rr]elease*/
+
+# VS test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# VS profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Resharper / ReSharper C++
+_ReSharper*/
+*.resharper
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Dependency managers (vcpkg, conan)
+vcpkg_installed/
+.conan/
+conan.lock
+
+# Logs and crash dumps
+*.log
+*.dmp
+core
