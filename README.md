@@ -1,2 +1,1 @@
-##Diploma Thesis Project
-It focuses on two netcode implementations: Delay-Based and Rollback.
+Simple C++ Game used for practice.

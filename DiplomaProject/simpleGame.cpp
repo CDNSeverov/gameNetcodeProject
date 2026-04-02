@@ -16,14 +16,34 @@ int attackCounterOpponent = 0;
 
 double accumulator = 0.0;
 
+// Game loop related
+
 void endGame() {
     window.close();
 }
 
+void renderScene() {
+    window.clear();
+    window.draw(playerAttack);
+    window.draw(opponentAttack);
+    window.draw(player);
+    window.draw(opponent);
+    window.display();
+}
+
+// Online 
+
+// {left, right, attack} might add more if needed
 std::array<int,3> recieveInputs() {
-    std::array<int, 3> recieved = { 0,0,0 };
+    std::array<int, 3> recieved = { 0,0,1 };
     return recieved;
 }
+
+void sendInputs() {
+
+}
+
+// Collision Logic
 
 bool AABBCollision(const sf::RectangleShape& a, const sf::RectangleShape& b) {
     sf::FloatRect aBounds = a.getGlobalBounds();
@@ -66,20 +86,19 @@ void checkCollisions() {
     }
 }
 
-void update() {
+// Updating Players
+
+void updatePlayer() {
     sf::Vector2f playerPosition = player.getPosition();
 
-    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && playerPosition.x >= 50.0f) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) && playerPosition.x >= 50.0f) {
         player.move(sf::Vector2f(-10.0f, 0.0f));
     }
 
-    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && playerPosition.x <= 1230.0f) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) && playerPosition.x >= 50.0f) {
         player.move(sf::Vector2f(10.0f, 0.0f));
     }
 
-    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && playerPosition.x <= 1230.0f) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) && playerPosition.x <= 1230.0f) {
         playerAttack.setPosition(sf::Vector2f(playerPosition.x + 50.0f, 450.f));
         if (attackCounter <= 0) {
@@ -97,7 +116,6 @@ void update() {
     }
 }
 
-// {left, right, attack} might add more if needed
 void updateOpponent(std::array<int, 3> inputs) {
     sf::Vector2f opponentPosition = opponent.getPosition();
 
@@ -129,6 +147,7 @@ void updateOpponent(std::array<int, 3> inputs) {
     }
 }
 
+// Game Loop
 
 int main()
 {
@@ -159,23 +178,15 @@ int main()
 
         
         while (accumulator > 1.0 / 60.0) {
-            update();
+            updatePlayer();
             updateOpponent(recieveInputs());
 
             checkCollisions();
 
-
             accumulator -= 1.0 / 60.0;
         }
 
-        window.clear();
-        window.draw(playerAttack);
-        window.draw(opponentAttack);
-        window.draw(player);
-        window.draw(opponent);
-        window.display();
-
-        //std::cout << "Player position x(" << playerPosition.x << ") y(" << playerPosition.y << ")" << std::endl;
+        renderScene();
     }
 
     return 0;
